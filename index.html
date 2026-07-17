@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naimon Apps | Desarrollo Android y Soluciones Digitales</title>
+    <meta name="description" content="Desarrollo de aplicaciones móviles Android, soluciones digitales y experiencias de entretenimiento innovadoras.">
+    <link rel="canonical" href="https://github.com/naimon.github.io" />
+    
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Naimon Apps | Apps Android Oficial">
+    <meta property="og:description" content="Desarrollo de aplicaciones móviles Android, soluciones digitales y experiencias de entretenimiento innovadoras.">
+    <meta property="og:url" content="https://github.com/naimon.github.io">
+
+    <!-- Tailwind CSS Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#dc2626',
+                            'red-hover': '#b91c1c',
+                            slate: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans selection:bg-red-500 selection:text-white">
+
+    <!-- Barra de Navegación -->
+    <header class="bg-white/80 backdrop-blur-md border-b border-slate-200 fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center space-x-2.5">
+                <div class="w-9 h-9 rounded-xl bg-red-600 flex items-center justify-center text-white font-extrabold text-xl shadow-md shadow-red-600/20">
+                    N
+                </div>
+                <span class="font-bold text-xl tracking-tight text-slate-950 font-display">
+                    Naimon <span class="text-red-600">Apps</span>
+                </span>
+            </a>
+
+            <!-- Navegación de Escritorio -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+                <a href="#inicio" class="hover:text-red-600 transition-colors">Inicio</a>
+                <a href="#apps" class="hover:text-red-600 transition-colors">Aplicaciones</a>
+                <a href="#servicios" class="hover:text-red-600 transition-colors">Servicios</a>
+                <a href="#sobre-nosotros" class="hover:text-red-600 transition-colors">Sobre Nosotros</a>
+                <a href="#contacto" class="hover:text-red-600 transition-colors">Contacto</a>
+            </nav>
+
+            <!-- CTA Escritorio -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="https://play.google.com/store/apps/dev?id=NaimonAppsID" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-4.5 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5 shadow-md shadow-red-600/15">
+                    Google Play Store
+                    <svg class="w-4 h-4 ml-2 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2zm0-10h2v8h-2z"/></svg>
+                </a>
+            </div>
+
+            <!-- Botón de Menú Móvil -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-600 hover:text-red-600 hover:bg-slate-100 transition-colors" aria-label="Abrir Menú">
+                <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+                <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menú Móvil Expandido -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3 shadow-lg">
+            <a href="#inicio" class="block py-2 text-base font-semibold text-slate-700 hover:text-red-600">Inicio</a>
+            <a href="#apps" class="block py-2 text-base font-semibold text-slate-700 hover:text-red-600">Aplicaciones</a>
+            <a href="#servicios" class="block py-2 text-base font-semibold text-slate-700 hover:text-red-600">Servicios</a>
+            <a href="#sobre-nosotros" class="block py-2 text-base font-semibold text-slate-700 hover:text-red-600">Sobre Nosotros</a>
+            <a href="#contacto" class="block py-2 text-base font-semibold text-slate-700 hover:text-red-600">Contacto</a>
+            <a href="https://play.google.com/store/apps/dev?id=NaimonAppsID" target="_blank" rel="noopener noreferrer" class="w-full text-center inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-semibold transition-colors">
+                Perfil en Google Play
+            </a>
+        </div>
+    </header>
+
+    <!-- Sección Inicio (Hero) -->
+    <section id="inicio" class="pt-32 pb-20 md:pt-40 md:pb-32 bg-gradient-to-b from-red-50/40 via-white to-white overflow-hidden relative">
+        <div class="absolute inset-0 z-0 opacity-40">
+            <div class="absolute top-1/4 left-1/10 w-96 h-96 rounded-full bg-red-400/10 blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-1/10 w-96 h-96 rounded-full bg-slate-400/10 blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                <!-- Texto -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 bg-red-50 border border-red-200/50 rounded-full px-3.5 py-1.5 text-xs font-bold text-red-600 uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-red-600 animate-ping"></span>
+                        <span>Desarrollador Oficial Android</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-tight font-display">
+                        Creamos aplicaciones móviles que <span class="text-red-600 relative inline-block">conquistan<span class="absolute left-0 bottom-1 w-full h-2 bg-red-200 -z-10 rounded"></span></span> pantallas.
+                    </h1>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+                        Desarrollo de aplicaciones móviles Android, soluciones digitales y experiencias de entretenimiento innovadoras.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                        <a href="https://play.google.com/store/apps/dev?id=NaimonAppsID" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white text-base font-semibold rounded-2xl shadow-lg shadow-red-600/20 transition-all duration-200 hover:-translate-y-0.5">
+                            <svg class="w-5 h-5 mr-2.5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2zm0-10h2v8h-2z"/></svg>
+                            Explorar Google Play
+                        </a>
+                        <a href="#apps" class="inline-flex items-center justify-center px-6 py-3.5 bg-white hover:bg-slate-50 text-slate-800 border border-slate-200 text-base font-semibold rounded-2xl transition-all duration-200">
+                            Nuestras Aplicaciones
+                            <svg class="w-4 h-4 ml-2 text-slate-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 13l-7 7-7-7m14-6l-7 7-7-7"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Representación Visual -->
+                <div class="lg:col-span-5 relative flex justify-center">
+                    <div class="relative w-72 h-[550px] bg-slate-900 rounded-[40px] border-[10px] border-slate-950 shadow-2xl overflow-hidden shadow-slate-950/40">
+                        <!-- Parlante frontal y cámara -->
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-slate-950 rounded-b-2xl z-20 flex justify-center items-start pt-1">
+                            <span class="w-3 h-3 rounded-full bg-slate-800"></span>
+                        </div>
+                        
+                        <!-- Contenido Pantalla Movil -->
+                        <div class="absolute inset-0 bg-slate-950 flex flex-col justify-between p-6 pt-12 text-white">
+                            <!-- Header Móvil Mock -->
+                            <div class="flex justify-between items-center pb-4 border-b border-slate-800">
+                                <span class="font-bold text-xs tracking-wide text-slate-400">NAIMON OS v4.0</span>
+                                <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                            </div>
+
+                            <!-- Dashboard Mock -->
+                            <div class="flex-1 py-6 flex flex-col justify-center space-y-4">
+                                <div class="w-16 h-16 rounded-2xl bg-red-600 flex items-center justify-center font-black text-2xl mx-auto shadow-lg shadow-red-600/30">
+                                    N
+                                </div>
+                                <div class="text-center">
+                                    <h3 class="font-extrabold text-xl font-display text-white">Naimon Apps</h3>
+                                    <p class="text-slate-400 text-xs mt-1">Play Developer</p>
+                                </div>
+                                <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl text-center space-y-1">
+                                    <span class="text-xs text-red-500 font-bold">ESTADO DEL SERVICIO</span>
+                                    <div class="font-black text-lg">100% ONLINE</div>
+                                    <p class="text-[10px] text-slate-500">Apps optimizadas para Android 14 y 15</p>
+                                </div>
+                            </div>
+
+                            <!-- Footer Móvil Mock -->
+                            <div class="flex justify-center space-x-12 pt-4 border-t border-slate-800 text-slate-500 text-[10px]">
+                                <span>✦ CALIDAD</span>
+                                <span>✦ RENDIMIENTO</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Aplicaciones -->
+    <section id="apps" class="py-20 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-red-600 font-extrabold tracking-widest text-xs uppercase bg-red-50 border border-red-200/30 px-3.5 py-1.5 rounded-full">Catálogo de Aplicaciones</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 font-display tracking-tight">Nuestras Soluciones Android</h2>
+                <p class="text-base text-slate-500">
+                    Diseñamos experiencias fluidas con integraciones estables. Explora nuestras creaciones disponibles para descarga inmediata.
+                </p>
+            </div>
+
+            <!-- Grilla de Aplicaciones -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Tarjeta de Aplicación: ZenSpace: Ambient Timer -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col group hover:shadow-md hover:border-slate-300 transition-all duration-300">
+                    <div class="h-48 bg-slate-900 relative flex items-center justify-center p-6 overflow-hidden">
+                        <!-- Abstract art pattern for app logo background -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-red-600/20 to-slate-900 opacity-60"></div>
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-red-600/10 blur-xl"></div>
+                        
+                        <!-- App Logo Frame -->
+                        <div class="relative z-10 w-24 h-24 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <span class="text-3xl font-black text-red-500 font-display">Z</span>
+                        </div>
+                        
+                        <!-- Category Badge -->
+                        <span class="absolute top-4 left-4 bg-red-600/10 border border-red-500/20 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm">
+                            Productividad / Bienestar
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-red-600 transition-colors">ZenSpace: Ambient Timer</h3>
+                            <div class="flex items-center space-x-1 text-sm font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-md">
+                                <span>4.8</span>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-1">Temporizador de productividad minimalista con sonidos de fondo relajantes y técnicas de enfoque integradas. Diseñado para maximizar tu concentración mental, reducir el estrés diario y ayudarte a entrar en estados de flujo profundo.</p>
+                        
+                        <!-- App Mini-stats -->
+                        <div class="grid grid-cols-2 gap-2 py-3 border-t border-b border-slate-100 mb-5 text-xs text-slate-500 font-medium">
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                <span>25,000+ descargas</span>
+                            </div>
+                            <div class="flex items-center space-x-1 justify-end">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                <span>Google Play Verificado</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold text-sm rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                                <svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24">
+                                    <path d="M3 5.25v13.5c0 .73.4 1.39 1.05 1.72l9.02-9.02L4.05 2.41C3.4 2.74 3 3.4 3 4.13v1.12zm11.94 6.18l3.18-3.18c.31-.31.31-.82 0-1.13L15.3 4.3c-.63-.63-1.7-.18-1.7.71v1.6l-2.61 2.61 4.05 4.05v-1.84zM3.56 1.15L15.65 13.2l2.4-2.4c.59-.59.59-1.54 0-2.12L6.1 1.15a1.5 1.5 0 00-2.54 0zm16.88 11.6c-.31-.31-.82-.31-1.13 0l-3.18 3.18V14.1l-4.05-4.05v1.84l2.61 2.61v1.6c0 .89 1.07 1.34 1.7.71l2.85-2.85c.31-.31.31-.82 0-1.13zm-3.8 3.8L4.55 21.32c.65.33 1.45.22 1.99-.32l11.95-11.95-1.93-1.93z"/>
+                                </svg>
+                                Descargar de Google Play
+                            </a>
+                            <a href="privacy.html" class="w-full text-center block text-xs font-semibold text-slate-500 hover:text-red-600 transition-colors py-1">
+                                Política de Privacidad de la App
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tarjeta de Aplicación: NeonGrid: Retro Runner -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col group hover:shadow-md hover:border-slate-300 transition-all duration-300">
+                    <div class="h-48 bg-slate-900 relative flex items-center justify-center p-6 overflow-hidden">
+                        <!-- Abstract art pattern for app logo background -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-red-600/20 to-slate-900 opacity-60"></div>
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-red-600/10 blur-xl"></div>
+                        
+                        <!-- App Logo Frame -->
+                        <div class="relative z-10 w-24 h-24 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <span class="text-3xl font-black text-red-500 font-display">N</span>
+                        </div>
+                        
+                        <!-- Category Badge -->
+                        <span class="absolute top-4 left-4 bg-red-600/10 border border-red-500/20 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm">
+                            Juego / Arcade
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-red-600 transition-colors">NeonGrid: Retro Runner</h3>
+                            <div class="flex items-center space-x-1 text-sm font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-md">
+                                <span>4.7</span>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-1">Un vibrante videojuego de estilo synthwave infinito donde esquivas obstáculos geométricos flotantes al ritmo de música electrónica retro original de sintetizador. Rápido, adictivo, con tablas de clasificación mundial y soporte para 120Hz.</p>
+                        
+                        <!-- App Mini-stats -->
+                        <div class="grid grid-cols-2 gap-2 py-3 border-t border-b border-slate-100 mb-5 text-xs text-slate-500 font-medium">
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                <span>50,000+ descargas</span>
+                            </div>
+                            <div class="flex items-center space-x-1 justify-end">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                <span>Google Play Verificado</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold text-sm rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                                <svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24">
+                                    <path d="M3 5.25v13.5c0 .73.4 1.39 1.05 1.72l9.02-9.02L4.05 2.41C3.4 2.74 3 3.4 3 4.13v1.12zm11.94 6.18l3.18-3.18c.31-.31.31-.82 0-1.13L15.3 4.3c-.63-.63-1.7-.18-1.7.71v1.6l-2.61 2.61 4.05 4.05v-1.84zM3.56 1.15L15.65 13.2l2.4-2.4c.59-.59.59-1.54 0-2.12L6.1 1.15a1.5 1.5 0 00-2.54 0zm16.88 11.6c-.31-.31-.82-.31-1.13 0l-3.18 3.18V14.1l-4.05-4.05v1.84l2.61 2.61v1.6c0 .89 1.07 1.34 1.7.71l2.85-2.85c.31-.31.31-.82 0-1.13zm-3.8 3.8L4.55 21.32c.65.33 1.45.22 1.99-.32l11.95-11.95-1.93-1.93z"/>
+                                </svg>
+                                Descargar de Google Play
+                            </a>
+                            <a href="privacy.html" class="w-full text-center block text-xs font-semibold text-slate-500 hover:text-red-600 transition-colors py-1">
+                                Política de Privacidad de la App
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tarjeta de Aplicación: MeteoNow: Widget Climático -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col group hover:shadow-md hover:border-slate-300 transition-all duration-300">
+                    <div class="h-48 bg-slate-900 relative flex items-center justify-center p-6 overflow-hidden">
+                        <!-- Abstract art pattern for app logo background -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-red-600/20 to-slate-900 opacity-60"></div>
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 rounded-full bg-red-600/10 blur-xl"></div>
+                        
+                        <!-- App Logo Frame -->
+                        <div class="relative z-10 w-24 h-24 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-300">
+                            <span class="text-3xl font-black text-red-500 font-display">M</span>
+                        </div>
+                        
+                        <!-- Category Badge -->
+                        <span class="absolute top-4 left-4 bg-red-600/10 border border-red-500/20 text-red-700 text-xs font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm">
+                            Herramientas / Clima
+                        </span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col">
+                        <div class="flex items-center justify-between mb-2">
+                            <h3 class="text-xl font-bold text-slate-900 group-hover:text-red-600 transition-colors">MeteoNow: Widget Climático</h3>
+                            <div class="flex items-center space-x-1 text-sm font-medium text-amber-500 bg-amber-500/10 px-2 py-0.5 rounded-md">
+                                <span>4.9</span>
+                                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                            </div>
+                        </div>
+                        <p class="text-slate-600 text-sm mb-4 line-clamp-3 flex-1">Información meteorológica de alta precisión en tiempo real con widgets minimalistas altamente configurables para tu pantalla de inicio Android. Pronósticos meteorológicos confiables, alertas de lluvia inminente y consumo de batería mínimo.</p>
+                        
+                        <!-- App Mini-stats -->
+                        <div class="grid grid-cols-2 gap-2 py-3 border-t border-b border-slate-100 mb-5 text-xs text-slate-500 font-medium">
+                            <div class="flex items-center space-x-1">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                                <span>10,000+ descargas</span>
+                            </div>
+                            <div class="flex items-center space-x-1 justify-end">
+                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                                <span>Google Play Verificado</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <a href="https://play.google.com/store/apps" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white font-semibold text-sm rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
+                                <svg class="w-4 h-4 mr-2 fill-current" viewBox="0 0 24 24">
+                                    <path d="M3 5.25v13.5c0 .73.4 1.39 1.05 1.72l9.02-9.02L4.05 2.41C3.4 2.74 3 3.4 3 4.13v1.12zm11.94 6.18l3.18-3.18c.31-.31.31-.82 0-1.13L15.3 4.3c-.63-.63-1.7-.18-1.7.71v1.6l-2.61 2.61 4.05 4.05v-1.84zM3.56 1.15L15.65 13.2l2.4-2.4c.59-.59.59-1.54 0-2.12L6.1 1.15a1.5 1.5 0 00-2.54 0zm16.88 11.6c-.31-.31-.82-.31-1.13 0l-3.18 3.18V14.1l-4.05-4.05v1.84l2.61 2.61v1.6c0 .89 1.07 1.34 1.7.71l2.85-2.85c.31-.31.31-.82 0-1.13zm-3.8 3.8L4.55 21.32c.65.33 1.45.22 1.99-.32l11.95-11.95-1.93-1.93z"/>
+                                </svg>
+                                Descargar de Google Play
+                            </a>
+                            <a href="privacy.html" class="w-full text-center block text-xs font-semibold text-slate-500 hover:text-red-600 transition-colors py-1">
+                                Política de Privacidad de la App
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Servicios -->
+    <section id="servicios" class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-red-600 font-extrabold tracking-widest text-xs uppercase bg-red-50 border border-red-200/30 px-3.5 py-1.5 rounded-full">Áreas de Especialización</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 font-display tracking-tight">Servicios de Desarrollo Profesional</h2>
+                <p class="text-base text-slate-500">
+                    Ofrecemos experiencia técnica especializada para construir software moderno de alta confiabilidad técnica.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Servicio 1 -->
+                <div class="p-8 bg-slate-50 border border-slate-200/60 rounded-2xl hover:border-red-500/30 hover:bg-white transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-600/10 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Aplicaciones Móviles</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Especialistas en el desarrollo nativo para el ecosistema Android utilizando Kotlin, Java y Jetpack Compose. Diseñamos bajo las pautas oficiales de Material Design de Google, garantizando un rendimiento óptimo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="p-8 bg-slate-50 border border-slate-200/60 rounded-2xl hover:border-red-500/30 hover:bg-white transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-600/10 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 9.172V5L8 4z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Soluciones Digitales</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Diseñamos arquitecturas digitales completas e interfaces web responsivas. Integramos APIs externas de forma segura y estructuramos bases de datos locales robustas como SQLite/Room para la máxima resiliencia.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="p-8 bg-slate-50 border border-slate-200/60 rounded-2xl hover:border-red-500/30 hover:bg-white transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-600/10 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Entretenimiento Interactivo</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">
+                            Creamos juegos móviles y experiencias interactivas optimizadas para dispositivos Android. Nos enfocamos en físicas realistas, bucles de juego pulidos y altos cuadros por segundo (FPS) en pantallas de alta tasa de refresco.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Sobre Nosotros -->
+    <section id="sobre-nosotros" class="py-20 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Imagen / Detalle Visual -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="bg-slate-900 text-white rounded-3xl p-8 border border-slate-800 shadow-xl max-w-md w-full relative overflow-hidden">
+                        <div class="absolute -right-16 -top-16 w-48 h-48 bg-red-600/20 rounded-full blur-2xl"></div>
+                        <div class="space-y-6 relative z-10">
+                            <span class="text-xs font-bold uppercase tracking-widest text-red-500">Métricas de Rendimiento</span>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                                    <div class="text-3xl font-black text-white font-display">100%</div>
+                                    <p class="text-[10px] text-slate-400 mt-1 uppercase font-bold">Código Nativo</p>
+                                </div>
+                                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700/50">
+                                    <div class="text-3xl font-black text-white font-display">60 FPS</div>
+                                    <p class="text-[10px] text-slate-400 mt-1 uppercase font-bold">Rendimiento Base</p>
+                                </div>
+                                <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700/50 col-span-2">
+                                    <div class="text-xl font-bold text-red-500">Google Play Core</div>
+                                    <p class="text-[10px] text-slate-400 mt-0.5">Integración nativa con la API de facturación y reseñas in-app.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Texto -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-red-600 font-extrabold tracking-widest text-xs uppercase bg-red-50 border border-red-200/30 px-3.5 py-1.5 rounded-full">¿Quiénes Somos?</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 font-display tracking-tight">Estudio de Desarrollo Independiente</h2>
+                    <p class="text-slate-600 leading-relaxed font-medium">
+                        Fundado por un desarrollador de software apasionado por la plataforma móvil, <strong>Naimon Apps</strong> se enfoca en resolver problemas cotidianos con interfaces visualmente pulidas y código altamente optimizado.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed">
+                        Nuestro compromiso es ofrecer aplicaciones que respeten la privacidad del usuario final, optimicen el uso de batería en hardware Android moderno y sigan de cerca las últimas innovaciones de las APIs oficiales de Google. Creemos que las grandes soluciones nacen de la simplicidad técnica y el refinamiento estético.
+                    </p>
+                    <div class="pt-2">
+                        <h4 class="font-bold text-slate-900 text-sm mb-3">Nuestra pila de tecnologías principal:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-3.5 py-1.5 rounded-xl">Kotlin</span>
+                            <span class="bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-3.5 py-1.5 rounded-xl">Jetpack Compose</span>
+                            <span class="bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-3.5 py-1.5 rounded-xl">Java</span>
+                            <span class="bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-3.5 py-1.5 rounded-xl">Android Studio</span>
+                            <span class="bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-3.5 py-1.5 rounded-xl">Room / SQLite</span>
+                            <span class="bg-white border border-slate-200 text-slate-700 text-xs font-semibold px-3.5 py-1.5 rounded-xl">Firebase SDK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="py-20 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Información de Contacto -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="text-red-600 font-extrabold tracking-widest text-xs uppercase bg-red-50 border border-red-200/30 px-3.5 py-1.5 rounded-full">Canales de Soporte</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 font-display tracking-tight">Hablemos de tu Próximo Proyecto</h2>
+                    <p class="text-slate-600 leading-relaxed font-medium">
+                        ¿Tienes dudas sobre el funcionamiento de nuestras aplicaciones, necesitas soporte técnico especializado o te gustaría proponer una colaboración digital?
+                    </p>
+                    
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center text-red-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Correo Electrónico Oficial</h4>
+                                <a href="mailto:c.neira.sdk@gmail.com" class="text-slate-900 font-semibold hover:text-red-600 transition-colors">c.neira.sdk@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-3.5">
+                            <div class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center text-red-600">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"/></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Redes Sociales y Código</h4>
+                                <div class="flex space-x-4 mt-1">
+                                    <a href="https://github.com/naimon" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-red-600 transition-colors" title="GitHub">
+                                        GitHub
+                                    </a>
+                                    <a href="https://x.com/naimon_apps" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-red-600 transition-colors" title="Twitter/X">
+                                        Twitter
+                                    </a>
+                                    <a href="https://linkedin.com/in/naimon" target="_blank" rel="noopener noreferrer" class="text-slate-600 hover:text-red-600 transition-colors" title="LinkedIn">
+                                        LinkedIn
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario de Contacto -->
+                <div class="lg:col-span-7 bg-slate-50 border border-slate-200/60 p-8 rounded-3xl">
+                    <form id="contact-form" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label for="name" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Nombre Completo</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-red-500 text-sm transition-colors" placeholder="Tu nombre...">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Correo Electrónico</label>
+                                <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-red-500 text-sm transition-colors" placeholder="tu@correo.com">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Asunto</label>
+                            <input type="text" id="subject" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-red-500 text-sm transition-colors" placeholder="Ej: Soporte técnico o Solicitud de servicio">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Mensaje o Consulta</label>
+                            <textarea id="message" rows="5" required class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white focus:outline-none focus:border-red-500 text-sm transition-colors" placeholder="Escribe aquí en detalle tu requerimiento..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full inline-flex items-center justify-center px-5 py-3 bg-red-600 hover:bg-red-700 text-white text-sm font-semibold rounded-xl shadow-md transition-colors duration-200 cursor-pointer">
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                    <div id="form-success" class="hidden mt-4 p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium rounded-xl">
+                        ✓ ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo lo antes posible.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-800">
+                <!-- Columna Logo -->
+                <div class="md:col-span-5 space-y-4">
+                    <a href="#" class="flex items-center space-x-2.5">
+                        <div class="w-8 h-8 rounded-lg bg-red-600 flex items-center justify-center text-white font-extrabold text-lg">
+                            N
+                        </div>
+                        <span class="font-bold text-lg tracking-tight text-white font-display">
+                            Naimon <span class="text-red-500">Apps</span>
+                        </span>
+                    </a>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+                        Desarrollo independiente de aplicaciones móviles robustas, limpias y altamente eficientes para el ecosistema Android de Google.
+                    </p>
+                </div>
+
+                <!-- Columna Enlaces -->
+                <div class="md:col-span-4 space-y-4">
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest">Navegación</h4>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <a href="#inicio" class="hover:text-red-500 transition-colors">Inicio</a>
+                        <a href="#apps" class="hover:text-red-500 transition-colors">Aplicaciones</a>
+                        <a href="#servicios" class="hover:text-red-500 transition-colors">Servicios</a>
+                        <a href="#sobre-nosotros" class="hover:text-red-500 transition-colors">Sobre Nosotros</a>
+                        <a href="#contacto" class="hover:text-red-500 transition-colors">Contacto</a>
+                        <a href="privacy.html" class="text-red-500 font-semibold hover:underline">Privacidad</a>
+                    </div>
+                </div>
+
+                <!-- Columna Play Badge -->
+                <div class="md:col-span-3 space-y-4">
+                    <h4 class="text-xs font-bold text-white uppercase tracking-widest">Google Play Store</h4>
+                    <p class="text-xs text-slate-500">Todas nuestras aplicaciones están listadas y certificadas con firmas seguras en la Google Play Store.</p>
+                    <a href="https://play.google.com/store/apps/dev?id=NaimonAppsID" target="_blank" rel="noopener noreferrer" class="inline-flex items-center bg-slate-950 border border-slate-800 px-4 py-2 rounded-xl text-xs hover:border-red-500/50 transition-colors">
+                        <span class="font-semibold text-white">Ver Perfil Oficial</span>
+                        <svg class="w-3.5 h-3.5 ml-2 text-slate-500 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h2v2h-2zm0-10h2v8h-2z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+                <p>&copy; 2026 Naimon Apps. Todos los derechos reservados.</p>
+                <div class="flex space-x-4">
+                    <a href="privacy.html" class="hover:text-slate-300 transition-colors">Política de Privacidad</a>
+                    <span>&bull;</span>
+                    <p>Compatible con Google Play Console</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script de Menú Móvil y Envío de Formulario en Vanilla JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    menuIcon.classList.add('hidden');
+                    closeIcon.classList.remove('hidden');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                }
+            });
+
+            // Cerrar menú al hacer clic en enlace móvil
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('hidden');
+                    closeIcon.classList.add('hidden');
+                });
+            });
+
+            // Formulario de Contacto Mock
+            const contactForm = document.getElementById('contact-form');
+            const formSuccess = document.getElementById('form-success');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    
+                    // Mostrar mensaje de éxito simulado
+                    formSuccess.classList.remove('hidden');
+                    contactForm.reset();
+                    
+                    // Auto-ocultar mensaje de éxito en 5 segundos
+                    setTimeout(() => {
+                        formSuccess.classList.add('hidden');
+                    }, 5000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
